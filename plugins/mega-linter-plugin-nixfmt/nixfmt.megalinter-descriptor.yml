@@ -17,4 +17,4 @@ linters:
         - RUN apk add curl musl-dev zlib-dev cabal git
         - RUN curl -sSL https://get.haskellstack.org/ | sh
         - RUN cabal --version
-        - RUN git clone https://github.com/serokell/nixfmt && cd nixfmt && cabal new-build
+        - RUN git clone https://github.com/serokell/nixfmt && cd nixfmt && cabal new-build && ls
