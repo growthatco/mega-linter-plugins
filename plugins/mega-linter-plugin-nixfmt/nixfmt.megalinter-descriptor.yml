@@ -1,4 +1,3 @@
-
 descriptor_id: NIX
 descriptor_type: format
 file_extensions:
@@ -15,6 +14,8 @@ linters:
       dockerfile:
         - RUN apk upgrade --update-cache --available
         - RUN apk add ghc
-        - RUN apk add curl musl-dev zlib-dev cabal
+        - RUN apk add curl musl-dev zlib-dev cabal git
         - RUN curl -sSL https://get.haskellstack.org/ | sh
         - RUN cabal --version
+        - RUN git clone https://github.com/serokell/nixfmt && cd nixfmt
+        - RUN cabal new-build
