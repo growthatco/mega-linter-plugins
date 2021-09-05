@@ -1,0 +1,20 @@
+
+descriptor_id: NIX
+descriptor_type: format
+file_extensions:
+  - ".nix"  
+linters:
+  - linter_name: nixfmt
+    linter_repo: https://github.com/serokell/nixfmt
+    linter_url: https://nixfmt.serokell.io/
+    is_formatter: true
+    examples:
+      - "`nixfmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
+      - "`nixfmt file.nix` – format the file in place"
+    install:
+      dockerfile:
+        - |
+          FROM nixos/nix
+          RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+          RUN nix-channel --update
+          RUN nix-env -iA nixpkgs.nixfmt
