@@ -13,10 +13,8 @@ linters:
       - "`nixfmt file.nix` – format the file in place"
     install:
       dockerfile:
-        - RUN addgroup --system nixbld && \
-            adduser --home /home/nix --disabled-password --gecos "" --shell /bin/bash nix && \
-            adduser nix nixbld && \
-            mkdir -m 0755 /nix && chown nix /nix && \
-            mkdir -p /etc/nix && echo 'sandbox = false' > /etc/nix/nix.conf
-        - RUN touch .bash_profile && \
-            curl https://nixos.org/nix/install | sh
+        - RUN apk upgrade --update-cache --available
+        - RUN apk add ghc
+        - RUN apk add curl musl-dev zlib-dev
+        - RUN curl -sSL https://get.haskellstack.org/ | sh
+        - RUN cabal --version
