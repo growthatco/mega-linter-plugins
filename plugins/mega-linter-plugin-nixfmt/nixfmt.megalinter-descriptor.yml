@@ -13,13 +13,10 @@ linters:
       - "`nixfmt file.nix` – format the file in place"
     install:
       dockerfile:
-        - "RUN apk add --update bzip2 gnupg perl curl bash sudo && rm -rf /var/cache/apk/*"
-        - "ENV LANG en_US.utf8"
-        - "RUN addgroup sudo"
-        - "RUN adduser -h /home/tester -D -s /bin/bash tester"
-        - "RUN addgroup tester sudo"
-        - "RUN echo ' tester      ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers"
-        - "RUN curl -L https://nixos.org/nix/install | sh"
-        - "RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs"
-        - "RUN nix-channel --update"
-        - "RUN nix-env -iA nixpkgs.nixfmt"
+        - RUN addgroup --system nixbld && \
+            adduser --home /home/nix --disabled-password --gecos "" --shell /bin/bash nix && \
+            adduser nix nixbld && \
+            mkdir -m 0755 /nix && chown nix /nix && \
+            mkdir -p /etc/nix && echo 'sandbox = false' > /etc/nix/nix.conf
+        - RUN touch .bash_profile && \
+            curl https://nixos.org/nix/install | sh
