@@ -21,4 +21,4 @@ linters:
         - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable \
             nix-channel --update \
             nix-env -iA nixpkgs.nixfmt \
-            echo "$(nixfmt --version)" >&2; exit 1;
+            ls /nix | xargs >&2; exit 1;
