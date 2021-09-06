@@ -14,11 +14,11 @@ linters:
       dockerfile:
         - RUN apk add  \
             --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
-            --update --no-cache boost-dev
+            --update --no-cache boost-dev tar xz
         - RUN apk add  \
             --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
             --update --no-cache nix
-        - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable \
-            nix-channel --update \
-            nix-env -iA nixpkgs.nixfmt \
-            echo "asdfasdfasdfasdfasdfasdfasdf" >&2; exit 1;
+        - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable && \
+            nix-channel --update && \
+            nix-env -iA nixpkgs.nixfmt && \
+            echo "$(which nixfmt)" >&2; exit 1;
