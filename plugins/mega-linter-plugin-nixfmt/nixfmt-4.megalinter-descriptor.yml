@@ -7,6 +7,11 @@ linters:
     linter_repo: https://github.com/serokell/nixfmt
     linter_url: https://nixfmt.serokell.io/
     is_formatter: true
+    cli_lint_extra_args:
+      - "--check"
+    cli_lint_fix_arg_name: "--width=100"
+    cli_lint_fix_remove_args:
+      - "--check"
     examples:
       - "`nixfmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
       - "`nixfmt file.nix` – format the file in place"
