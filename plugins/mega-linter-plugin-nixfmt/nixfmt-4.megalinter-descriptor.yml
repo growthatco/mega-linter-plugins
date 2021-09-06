@@ -13,9 +13,12 @@ linters:
     install:
       dockerfile:
         - RUN apk add  \
-            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
-            --update --no-cache boost-dev
+          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
+          --update --no-cache boost-dev
         - RUN apk add  \
-            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-            --update --no-cache nix
-        - RUN nix-env -iA nixpkgs.nixfmt
+          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+          --update --no-cache nix
+        - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable \
+          nix-channel --update \
+          nix-env -iA nixpkgs.nixfmt \
+          which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt
