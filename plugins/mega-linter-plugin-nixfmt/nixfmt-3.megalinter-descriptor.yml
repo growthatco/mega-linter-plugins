@@ -22,4 +22,4 @@ linters:
         - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable \
             nix-channel --update \
             nix-env -iA nixpkgs.nixfmt \
-            ls /nix | xargs >&2; exit 1;
+            echo "$(ls / | xargs)" >&2; exit 1;
