@@ -13,7 +13,7 @@ linters:
     install:
       dockerfile:
         - RUN apk upgrade --update-cache --available
-        - RUN apk add boost-dev
+        - RUN apk add boost-dev so:libboost_context.so.1.76.0
         - RUN apk upgrade --update-cache --available -X http://dl-cdn.alpinelinux.org/alpine/edge/testing
-        - RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing nix-dev
+        - RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing nix
         - RUN nix --version
