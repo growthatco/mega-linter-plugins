@@ -20,6 +20,8 @@ linters:
             --update --no-cache nix
         - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable
         - RUN nix-channel --update
+        - RUN ls /nix
+        - RUN nix-env -iA nixpkgs.nixfmt
         # - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable && \
         #     nix-channel --update && \
         #     nix-env -iA nixpkgs.nixfmt && \
