@@ -21,4 +21,4 @@ linters:
         - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable \
           nix-channel --update \
           nix-env -iA nixpkgs.nixfmt \
-          which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt &&
+          which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt
