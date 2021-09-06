@@ -7,18 +7,20 @@ linters:
     linter_repo: https://github.com/serokell/nixfmt
     linter_url: https://nixfmt.serokell.io/
     is_formatter: true
+    name: NIX_NIXFMT
     examples:
       - "`nixfmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
       - "`nixfmt file.nix` – format the file in place"
     install:
       dockerfile:
         - RUN apk add  \
-          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
-          --update --no-cache boost-dev
+            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
+            --update --no-cache boost-dev
         - RUN apk add  \
-          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-          --update --no-cache nix
+            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+            --update --no-cache nix
         - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable \
-          nix-channel --update \
-          nix-env -iA nixpkgs.nixfmt \
-          nixfmt --version
+            nix-channel --update \
+            nix-env -iA nixpkgs.nixfmt \
+        - RUN ls /nix
+        - RUN export PATH="$HOME/.nix-profile/bin:$PATH"
