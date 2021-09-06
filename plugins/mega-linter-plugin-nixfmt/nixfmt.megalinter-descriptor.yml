@@ -13,7 +13,7 @@ linters:
     install:
       dockerfile:
         - RUN apk upgrade --update-cache --available
-        - RUN apk add boost-dev
+        - RUN apk add cmake boost boost-dev protobuf
         - RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing nix
         - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
         - RUN nix-channel --update
