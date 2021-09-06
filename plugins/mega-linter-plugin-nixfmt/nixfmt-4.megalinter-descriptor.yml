@@ -12,8 +12,17 @@ linters:
       - "`nixfmt file.nix` – format the file in place"
     install:
       dockerfile:
-        - RUN apk upgrade --update-cache --available
-        - RUN apk add boost-dev ca-certificates
-        - RUN apk upgrade --update-cache --available -X http://dl-cdn.alpinelinux.org/alpine/edge/testing
-        - RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing nix
+        - RUN apk add --update --no-cache \
+            build-base \
+            cmake \
+            bash \
+            boost-dev \
+            autoconf \
+            zlib-dev \
+            flex \
+            bison \
+            g++
+        - RUN apk add  \
+            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+            --update --no-cache nix
         - RUN nix --version
