@@ -1,7 +1,7 @@
 descriptor_id: NIX
 descriptor_type: format
 file_extensions:
-  - ".nix"  
+  - ".nix"
 linters:
   - linter_name: nixfmt
     linter_repo: https://github.com/serokell/nixfmt
@@ -13,11 +13,12 @@ linters:
     install:
       dockerfile:
         - RUN apk add  \
-            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
-            --update --no-cache boost-dev
+          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
+          --update --no-cache boost-dev
         - RUN apk add  \
-            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-            --update --no-cache nix
+          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+          --update --no-cache nix
         - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable \
-            nix-channel --update \
-            nix-env -iA nixpkgs.nixfmt
+          nix-channel --update \
+          nix-env -iA nixpkgs.nixfmt \
+          which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt && which nixfmt &&
