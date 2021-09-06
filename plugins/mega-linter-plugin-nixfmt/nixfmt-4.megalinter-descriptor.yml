@@ -13,15 +13,14 @@ linters:
     install:
       dockerfile:
         - RUN apk add --update --no-cache \
-            build-base \
-            cmake \
-            bash \
-            boost-dev \
-            autoconf \
-            zlib-dev \
+            python3-dev \
             flex \
             bison \
-            g++
+            bzip2-dev \
+            icu-dev \
+            xz-dev \
+            zlib-dev
+        - RUN apk add --update --no-cache boost-dev boost1.76-context	
         - RUN apk add  \
             --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
             --update --no-cache nix

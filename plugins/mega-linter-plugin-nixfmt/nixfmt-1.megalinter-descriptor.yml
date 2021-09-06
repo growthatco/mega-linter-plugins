@@ -20,7 +20,7 @@ linters:
             icu-dev \
             xz-dev \
             zlib-dev
-        - RUN apk add --update --no-cache boost-libs
+        - RUN apk add --update --no-cache boost-dev boost1.76-context	
         - RUN apk add  \
             --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
             --update --no-cache nix
