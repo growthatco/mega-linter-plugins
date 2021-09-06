@@ -13,6 +13,8 @@ linters:
       - "`nixfmt file.nix` – format the file in place"
     install:
       dockerfile:
+        - RUN mkdir /nix
+        - RUN chown $(whoami) /nix
         - RUN apk add  \
             --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
             --update --no-cache boost-dev tar xz
