@@ -14,6 +14,7 @@ linters:
     cli_docker_args:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint:rw"
+    cli_executable: nixfmt
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
       - "--check"
