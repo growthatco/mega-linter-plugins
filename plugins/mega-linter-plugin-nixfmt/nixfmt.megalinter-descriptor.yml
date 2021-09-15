@@ -10,7 +10,10 @@ linters:
     linter_repo: https://github.com/serokell/nixfmt
     linter_url: https://nixfmt.serokell.io/
     is_formatter: true
-    cli_docker_image: nixos/nix
+    cli_docker_image: foo/nixfmt
+    cli_docker_args:
+      - "-v"
+      - "{{WORKSPACE}}:/tmp/lint:rw"
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
       - "--check"
@@ -26,10 +29,10 @@ linters:
     install:
       dockerfile:
         - |
-          RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-          RUN nix-channel --update
-          RUN nix-env -iA nixpkgs.nixfmt
-          RUN nixfmt --version
+          # RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+          # RUN nix-channel --update
+          # RUN nix-env -iA nixpkgs.nixfmt
+          # RUN nixfmt --version
 
           # RUN apk add  \
           #   --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
