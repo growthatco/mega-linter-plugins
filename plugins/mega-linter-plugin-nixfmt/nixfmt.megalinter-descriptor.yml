@@ -14,7 +14,7 @@ linters:
     cli_docker_args:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint:rw"
-    cli_executable: nixfmt  
+    cli_executable: nixfmt
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
       - "--check"
@@ -36,7 +36,7 @@ linters:
     linter_repo: https://github.com/serokell/nixfmt
     linter_url: https://nixfmt.serokell.io/
     is_formatter: true
-    cli_executable: nixfmt  
+    cli_executable: nixfmt
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
       - "--check"
@@ -51,26 +51,25 @@ linters:
       - "`nixfmt file1.nix file2.nix` – format multiple files"
     install:
       dockerfile:
-        - |
-          RUN apk add  \
-            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
-            --update --no-cache \
-            bash \
-            boost-dev \
-            curl \
-            sudo \
-            tar \
-            xz
-          RUN apk add  \
-            --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-            --update --no-cache nix
-          RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-          RUN nix-channel --update
-          RUN rm -rf /nix/var/nix/profiles/default
-          RUN ln -s /nix/var/nix/profiles/per-user/root /nix/var/nix/profiles/default
-          RUN nix-env -iA nixpkgs.nixfmt
-          RUN ln -s /nix/var/nix/profiles/default/bin/nixfmt /usr/bin
-          RUN nixfmt --version
+        - RUN apk add  \
+          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
+          --update --no-cache \
+          bash \
+          boost-dev \
+          curl \
+          sudo \
+          tar \
+          xz
+        - RUN apk add  \
+          --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+          --update --no-cache nix
+        - RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+        - RUN nix-channel --update
+        - RUN rm -rf /nix/var/nix/profiles/default
+        - RUN ln -s /nix/var/nix/profiles/per-user/root /nix/var/nix/profiles/default
+        - RUN nix-env -iA nixpkgs.nixfmt
+        - RUN ln -s /nix/var/nix/profiles/default/bin/nixfmt /usr/bin
+        - RUN nixfmt --version
     ide:
       vscode:
         - name: nixfmt
