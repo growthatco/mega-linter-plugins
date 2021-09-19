@@ -11,6 +11,9 @@ linters:
     linter_url: https://nixfmt.serokell.io/
     is_formatter: true
     cli_docker_image: samcraig/nixfmt
+    cli_docker_args:
+      - "-v"
+      - "{{WORKSPACE}}:/tmp/lint"
     cli_executable: nixfmt
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
@@ -21,9 +24,9 @@ linters:
     cli_version_arg_name: "--numeric-version"
     version_extract_regex: "(\\d+(\\.\\d+)+)"
     examples:
-      - "`docker run samcraig/nixfmt:latest nixfmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
-      - "`docker run samcraig/nixfmt:latest nixfmt file.nix` – format the file in place"
-      - "`docker run samcraig/nixfmt:latest nixfmt file1.nix file2.nix` – format multiple files"
+      - "`docker run -v /tmp/lint:/tmp/lint:rw samcraig/nixfmt:latest nixfmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
+      - "`docker run -v /tmp/lint:/tmp/lint:rw samcraig/nixfmt:latest nixfmt file.nix` – format the file in place"
+      - "`docker run -v /tmp/lint:/tmp/lint:rw samcraig/nixfmt:latest nixfmt file1.nix file2.nix` – format multiple files"
     ide:
       vscode:
         - name: nixfmt
