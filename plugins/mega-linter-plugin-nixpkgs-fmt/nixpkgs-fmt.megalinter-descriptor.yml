@@ -21,7 +21,8 @@ linters:
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--check"
-    cli_version_arg_name: "--numeric-version"
+    cli_version_arg_name: "--version"
+    version_command_return_code: 1
     version_extract_regex: "(\\d+(\\.\\d+)+)"
     examples:
       - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixpkgs-fmt:latest nixpkgs-fmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
@@ -43,7 +44,8 @@ linters:
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for Mega-Linter
     cli_lint_fix_remove_args:
       - "--check"
-    cli_version_arg_name: "--numeric-version"
+    cli_version_arg_name: "--version"
+    version_command_return_code: 1
     version_extract_regex: "(\\d+(\\.\\d+)+)"
     examples:
       - "`nixpkgs-fmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
