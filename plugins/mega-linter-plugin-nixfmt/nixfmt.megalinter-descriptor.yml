@@ -67,7 +67,7 @@ linters:
         - RUN nix-channel --update
         - RUN rm -rf /nix/var/nix/profiles/default
         - RUN ln -s /nix/var/nix/profiles/per-user/root /nix/var/nix/profiles/default
-        - RUN nix-env -iA nixpkgs.nixfmt
+        - RUN nix-env -iA nixpkgs.nixpkgs-fmt
         - RUN ln -s /nix/var/nix/profiles/default/bin/nixfmt /usr/bin
         - RUN nixfmt --version
     ide:
