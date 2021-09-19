@@ -71,7 +71,6 @@ linters:
         - RUN ln -s /nix/var/nix/profiles/per-user/root /nix/var/nix/profiles/default
         - RUN nix-env -iA nixpkgs.nixpkgs-fmt
         - RUN ln -s /nix/var/nix/profiles/default/bin/nixpkgs-fmt /usr/bin
-        - RUN nixpkgs-fmt --version
     ide:
       vscode:
         - name: nixpkgs-fmt
