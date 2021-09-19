@@ -5,16 +5,16 @@ descriptor_flavors:
 file_extensions:
   - ".nix"
 linters:
-  # NIXFMT [NIXOS]
-  - linter_name: nixfmt-nixos
-    linter_repo: https://github.com/serokell/nixfmt
-    linter_url: https://nixfmt.serokell.io/
+  # nixpkgs-fmt [NIXOS]
+  - linter_name: nixpkgs-fmt-nixos
+    linter_repo: https://github.com/serokell/nixpkgs-fmt
+    linter_url: https://nixpkgs-fmt.serokell.io/
     is_formatter: true
-    cli_docker_image: samcraig/nixfmt
+    cli_docker_image: samcraig/nixpkgs-fmt
     cli_docker_args:
       - "-v"
       - "{{WORKSPACE}}:/tmp/lint:rw"
-    cli_executable: nixfmt
+    cli_executable: nixpkgs-fmt
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
       - "--check"
@@ -24,19 +24,19 @@ linters:
     cli_version_arg_name: "--numeric-version"
     version_extract_regex: "(\\d+(\\.\\d+)+)"
     examples:
-      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixfmt:latest nixfmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
-      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixfmt:latest nixfmt file.nix` – format the file in place"
-      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixfmt:latest nixfmt file1.nix file2.nix` – format multiple files"
+      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixpkgs-fmt:latest nixpkgs-fmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
+      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixpkgs-fmt:latest nixpkgs-fmt file.nix` – format the file in place"
+      - "`docker run -v /path/to/host/workspace:/tmp/lint:rw samcraig/nixpkgs-fmt:latest nixpkgs-fmt file1.nix file2.nix` – format multiple files"
     ide:
       vscode:
-        - name: nixfmt
-          url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
-  # NIXFMT [ALPINE LINUX]
-  - linter_name: nixfmt-alpine
-    linter_repo: https://github.com/serokell/nixfmt
-    linter_url: https://nixfmt.serokell.io/
+        - name: nixpkgs-fmt
+          url: https://marketplace.visualstudio.com/items?itemName=B4dM4n.nixpkgs-fmt
+  # nixpkgs-fmt [ALPINE LINUX]
+  - linter_name: nixpkgs-fmt-alpine
+    linter_repo: https://github.com/serokell/nixpkgs-fmt
+    linter_url: https://nixpkgs-fmt.serokell.io/
     is_formatter: true
-    cli_executable: nixfmt
+    cli_executable: nixpkgs-fmt
     cli_help_arg_name: "--help"
     cli_lint_extra_args:
       - "--check"
@@ -46,9 +46,9 @@ linters:
     cli_version_arg_name: "--numeric-version"
     version_extract_regex: "(\\d+(\\.\\d+)+)"
     examples:
-      - "`nixfmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
-      - "`nixfmt file.nix` – format the file in place"
-      - "`nixfmt file1.nix file2.nix` – format multiple files"
+      - "`nixpkgs-fmt < input.nix` – reads Nix code form stdin, formats it, and outputs to stdout"
+      - "`nixpkgs-fmt file.nix` – format the file in place"
+      - "`nixpkgs-fmt file1.nix file2.nix` – format multiple files"
     install:
       dockerfile:
         - RUN apk add  \
@@ -68,9 +68,9 @@ linters:
         - RUN rm -rf /nix/var/nix/profiles/default
         - RUN ln -s /nix/var/nix/profiles/per-user/root /nix/var/nix/profiles/default
         - RUN nix-env -iA nixpkgs.nixpkgs-fmt
-        - RUN ln -s /nix/var/nix/profiles/default/bin/nixfmt /usr/bin
-        - RUN nixfmt --version
+        - RUN ln -s /nix/var/nix/profiles/default/bin/nixpkgs-fmt /usr/bin
+        - RUN nixpkgs-fmt --version
     ide:
       vscode:
-        - name: nixfmt
-          url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+        - name: nixpkgs-fmt
+          url: https://marketplace.visualstudio.com/items?itemName=B4dM4n.nixpkgs-fmt

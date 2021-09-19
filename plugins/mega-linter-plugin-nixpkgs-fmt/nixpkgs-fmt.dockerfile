@@ -4,4 +4,4 @@ RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 RUN nix-channel --update
 RUN nix-env -iA nixpkgs.nixpkgs-fmt
 
-CMD [ "nixfmt" ]
+CMD [ "nixpkgs-fmt" ]
